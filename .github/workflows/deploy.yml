@@ -44,8 +44,8 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: "🐳 Publish image"
-        uses: elgohr/Publish-Docker-Github-Action@master
         pre: echo ::save-state name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
+        uses: elgohr/Publish-Docker-Github-Action@master
         with:
           name: jmserrano-dev/code-challenge-editor/editor-spa
           registry: docker.pkg.github.com
