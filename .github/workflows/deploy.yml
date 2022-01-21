@@ -41,6 +41,8 @@ jobs:
     needs: build
 
     steps:
+      - uses: actions/checkout@v2
+
       - name: "🐳 Publish image"
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
