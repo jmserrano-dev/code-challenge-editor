@@ -43,8 +43,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: "🏷️ Generate tag image"
+        id: vars
+        run: echo ::set-output name=tag::$(echo ${GITHUB_SHA::7})
+
       - name: "🐳 Publish image"
-        pre: echo ::save-state name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
           name: jmserrano-dev/code-challenge-editor/editor-spa
@@ -52,7 +55,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           dockerfile: Dockerfile
-          tags: "latest,${{ env.STATE_RELEASE_VERSION }}"
+          tags: "latest,${{ steps.vars.outputs.tag }}"
 
   deploy:
     runs-on: ubuntu-latest
