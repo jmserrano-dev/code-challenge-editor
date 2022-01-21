@@ -46,7 +46,7 @@ jobs:
       - name: "🐳 Publish image"
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          name: code-challenge/genially/editor-spa
+          name: code-challenge/editor-spa
           registry: docker.pkg.github.com
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
