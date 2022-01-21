@@ -1,0 +1,68 @@
+name: CI-CD
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: "🚧 Configure Node ${{ matrix.node-version }}"
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: "📦️ Install packages"
+        run: yarn install
+
+      - name: "✅ Run tests"
+        run: yarn test
+        env:
+          CI: true
+
+      - name: "🏗️ Build proyect"
+        run: yarn build
+
+      - name: "📦 Publish artifact"
+        uses: actions/upload-artifact@v1
+        with:
+          name: spa
+          path: build
+
+  dockerize:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: "🐳 Publish image"
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: code-challenge/genially/editor-spa
+          registry: docker.pkg.github.com
+          username: ${{ secrets.GITHUB_USERNAME }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          dockerfile: Dockerfile
+          tags: "latest,${{ env.STATE_RELEASE_VERSION }}"
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: dockerize
+
+    steps:
+      - name: Get artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: spa
+
+      - name: "🚀 Deploy to gh-pages"
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./spa

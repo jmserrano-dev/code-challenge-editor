@@ -1,0 +1,17 @@
+.box-layout {
+  display: flex;
+  width: 100%;
+  padding: var(--space, 1rem);
+}
+
+.box-layout.s {
+  --space: 0.5rem;
+}
+
+.box-layout.m {
+  --space: 1rem;
+}
+
+.box-layout.l {
+  --space: 1.5rem;
+}

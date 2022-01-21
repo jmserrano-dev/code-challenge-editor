@@ -1,0 +1,28 @@
+body,
+html,
+#root {
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
+
+  background-color: var(--main-bg-color);
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  /* z-index */
+  --z-default: 1;
+  --z-above: 2;
+  --z-super: 3;
+
+  /* colors */
+  --main-bg-color: #282c34;
+  --selection-color: #282c34;
+}

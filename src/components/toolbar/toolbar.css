@@ -1,0 +1,19 @@
+.toolbar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  color: white;
+}
+
+.toolbar .layout__group {
+  display: flex;
+  justify-content: var(--justify, "start");
+  gap: 0.5rem;
+}
+
+.toolbar .layout__group.start {
+  --justify: start;
+}
+
+.toolbar .layout__group.end {
+  --justify: end;
+}

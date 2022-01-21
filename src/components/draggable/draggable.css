@@ -1,0 +1,15 @@
+.draggable {
+  position: absolute;
+  z-index: var(--z-default);
+}
+
+.draggable.draggable--selected {
+  z-index: var(--z-above);
+  outline: 3px solid var(--selection-color);
+  box-shadow: 8px 8px 8px 0px rgb(0 0 0 / 34%);
+}
+
+.draggable.draggable--dragging {
+  z-index: var(--z-super);
+  box-shadow: 8px 8px 8px 0px rgb(0 0 0 / 34%);
+}
