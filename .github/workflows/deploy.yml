@@ -46,7 +46,7 @@ jobs:
         with:
           name: code-challenge/genially/editor-spa
           registry: docker.pkg.github.com
-          username: ${{ secrets.GITHUB_USERNAME }}
+          username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           dockerfile: Dockerfile
           tags: "latest,${{ env.STATE_RELEASE_VERSION }}"
