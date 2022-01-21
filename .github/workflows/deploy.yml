@@ -60,7 +60,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: docker.pkg.github.com/jmserrano-dev/code-challenge/editor-spa:${{ steps.vars.outputs.tag }}
+          tags: docker.pkg.github.com/jmserrano-dev/code-challenge-editor/editor-spa:${{ steps.vars.outputs.tag }}
 
   deploy:
     runs-on: ubuntu-latest
