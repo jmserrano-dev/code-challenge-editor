@@ -28,6 +28,7 @@ const EditorToolbar = observer(() => {
         <Input
           type="color"
           defaultValue={color}
+          data-testid="input-color"
           onChange={(event) => onChangeColor(event.target.value)}
         />
       </ToolbarGroup>

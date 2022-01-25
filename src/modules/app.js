@@ -1,12 +1,14 @@
 import React from "react";
 
-import { store } from "../stores";
+import { createStore } from "../stores";
 import { Editor } from "./editor/editor";
 import { StoreProvider } from "../hooks";
 
 import "./app.css";
 
-const App = () => {
+const App = ({ enablePersist = true }) => {
+  const store = createStore(enablePersist);
+
   return (
     <div data-testid="app" className="app">
       <StoreProvider store={store}>

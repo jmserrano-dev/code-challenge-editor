@@ -35,11 +35,17 @@ const RootStore = types
     };
   });
 
-const store = RootStore.create();
+const createStore = (enablePersist = true) => {
+  const store = RootStore.create();
 
-persist("store", store, {
-  storage: localStorage,
-  jsonify: true,
-});
+  if (enablePersist) {
+    persist("store", store, {
+      storage: localStorage,
+      jsonify: true,
+    });
+  }
 
-export { store };
+  return store;
+};
+
+export { createStore };

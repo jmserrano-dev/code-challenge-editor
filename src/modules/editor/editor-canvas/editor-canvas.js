@@ -29,6 +29,7 @@ const EditorCanvas = observer(() => {
               color={box.color}
               width={box.width}
               height={box.height}
+              isSelected={box.isSelected}
               onClick={(event) => onSelect(event, isDragging, box)}
             />
           )}

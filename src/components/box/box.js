@@ -5,9 +5,9 @@ import "./box.css";
 const Box = (props) => {
   return (
     <div
-      data-testId="box"
+      data-testid="box"
       id={props.id}
-      className="box"
+      className={["box", props.isSelected ? "box--selected" : ""].join(" ")}
       style={{
         width: props.width,
         height: props.height,
