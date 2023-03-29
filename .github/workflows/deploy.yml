@@ -48,7 +48,7 @@ jobs:
         run: echo ::set-output name=tag::$(echo ${GITHUB_SHA::7})
 
       - name: "🐳 Publish image"
-        uses: elgohr/Publish-Docker-Github-Action@master
+        uses: elgohr/Publish-Docker-Github-Action@v5
         with:
           name: jmserrano-dev/code-challenge-editor/editor-spa
           registry: docker.pkg.github.com
